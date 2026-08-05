@@ -291,6 +291,63 @@
         .hero h1 { font-size:30px; }
         h2 { font-size:26px; }
     }
+
+    /* FOOTER LEGAL */
+    .footer-legal { display:flex; gap:22px; flex-wrap:wrap; justify-content:center; }
+    .footer-legal a { color:var(--text-dimmer); text-decoration:none; transition:color .3s ease; }
+    .footer-legal a:hover { color:var(--accent); }
+
+    /* COOKIE CONSENT */
+    .cookie-banner {
+        position:fixed; left:0; right:0; bottom:0; z-index:500;
+        background:#0b0c0e; border-top:1px solid var(--border);
+        padding:22px 40px; display:flex; flex-wrap:wrap; gap:20px;
+        align-items:center; justify-content:space-between;
+        transform:translateY(120%); transition:transform .4s ease;
+    }
+    .cookie-banner.visible { transform:translateY(0); }
+    .cookie-banner-text { flex:1 1 420px; font-size:13px; color:var(--text-dim); line-height:1.7; }
+    .cookie-banner-text a { color:var(--accent); text-decoration:underline; }
+    .cookie-banner-actions { display:flex; gap:12px; flex-wrap:wrap; }
+    .cookie-btn {
+        font-family:var(--sans); font-size:12px; letter-spacing:1px; text-transform:uppercase;
+        font-weight:600; padding:12px 22px; cursor:pointer; border-radius:2px; transition:all .3s ease;
+    }
+    .cookie-btn-solid { background:var(--accent); color:#000; border:1px solid var(--accent); }
+    .cookie-btn-solid:hover { background:transparent; color:var(--accent); }
+    .cookie-btn-solid-reject { background:transparent; color:var(--text); border:1px solid var(--text); }
+    .cookie-btn-solid-reject:hover { background:var(--text); color:#000; }
+    .cookie-btn-link { background:none; border:1px solid transparent; color:var(--text-dim); text-decoration:underline; }
+    .cookie-btn-link:hover { color:var(--text); }
+
+    .cookie-modal {
+        position:fixed; inset:0; z-index:600; background:rgba(0,0,0,.7);
+        display:flex; align-items:center; justify-content:center; padding:20px;
+    }
+    .cookie-modal[hidden] { display:none; }
+    .cookie-modal-panel {
+        background:var(--panel); border:1px solid var(--border); max-width:520px; width:100%;
+        padding:36px; max-height:86vh; overflow-y:auto;
+    }
+    .cookie-modal-panel h3 { font-family:var(--serif); font-size:24px; font-weight:400; margin-bottom:14px; color:var(--text); }
+    .cookie-modal-panel > p { font-size:13px; color:var(--text-dim); line-height:1.7; margin-bottom:24px; }
+    .cookie-category { border-top:1px solid var(--border); padding:18px 0; }
+    .cookie-category-head { display:flex; align-items:center; justify-content:space-between; font-size:14px; color:var(--text); font-weight:600; margin-bottom:8px; }
+    .cookie-category p { font-size:12px; color:var(--text-dimmer); line-height:1.6; }
+    .cookie-switch { position:relative; display:inline-block; width:40px; height:22px; flex-shrink:0; }
+    .cookie-switch input { opacity:0; width:0; height:0; }
+    .cookie-slider { position:absolute; inset:0; background:#333; border-radius:22px; transition:.3s; cursor:pointer; }
+    .cookie-slider::before { content:""; position:absolute; width:16px; height:16px; left:3px; top:3px; background:#fff; border-radius:50%; transition:.3s; }
+    .cookie-switch input:checked + .cookie-slider { background:var(--accent); }
+    .cookie-switch input:checked + .cookie-slider::before { transform:translateX(18px); }
+    .cookie-switch-disabled .cookie-slider { cursor:not-allowed; opacity:.6; }
+    .cookie-modal-actions { display:flex; gap:12px; justify-content:flex-end; margin-top:26px; flex-wrap:wrap; }
+
+    @media (max-width:600px){
+        .cookie-banner { padding:20px; }
+        .cookie-banner-actions { width:100%; }
+        .cookie-btn { flex:1; text-align:center; }
+    }
 </style>
 </head>
 <body>
@@ -520,13 +577,59 @@
     <span class="eyebrow">Agenda una llamada</span>
     <h2>El primer paso es<br><em>una conversación.</em></h2>
     <p>Sin compromiso, sin presión. Soy selectivo con quién trabajo, y si no somos compatibles te lo digo sin rodeos.</p>
-    <button class="cta-button">Reserva tu llamada aquí</button>
+    <a class="cta-button" href="https://calendly.com/soyangel-llanoss/reserva-sesion-clon?month=2026-08" target="_blank" rel="noopener">Reserva tu llamada aquí</a>
 </section>
 
 <footer>
     <span>© 2026 · Ángel Llanos · Mentoría Online</span>
+    <nav class="footer-legal">
+        <a href="aviso-legal.html">Aviso legal</a>
+        <a href="politica-privacidad.html">Política de privacidad</a>
+        <a href="politica-cookies.html">Política de cookies</a>
+        <a href="#" id="cookie-settings-link">Configurar cookies</a>
+    </nav>
     <span>Hecho para hombres que deciden cambiar</span>
 </footer>
+
+<!-- COOKIE CONSENT -->
+<div id="cookie-banner" class="cookie-banner" role="dialog" aria-live="polite" aria-label="Aviso de cookies">
+    <div class="cookie-banner-text">
+        <p>Usamos cookies propias necesarias para el funcionamiento de la web y, solo si las aceptas, cookies analíticas para mejorar tu experiencia. Puedes aceptarlas, rechazarlas o configurarlas. Más información en la <a href="politica-cookies.html">Política de cookies</a>.</p>
+    </div>
+    <div class="cookie-banner-actions">
+        <button type="button" class="cookie-btn cookie-btn-solid-reject" id="cookie-reject">Rechazar</button>
+        <button type="button" class="cookie-btn cookie-btn-link" id="cookie-configure">Configurar</button>
+        <button type="button" class="cookie-btn cookie-btn-solid" id="cookie-accept">Aceptar todas</button>
+    </div>
+</div>
+
+<div id="cookie-modal" class="cookie-modal" hidden>
+    <div class="cookie-modal-panel" role="dialog" aria-modal="true" aria-label="Configuración de cookies">
+        <h3>Configuración de cookies</h3>
+        <p>Elige qué cookies quieres permitir. Puedes cambiar esta elección cuando quieras desde «Configurar cookies», en el pie de página.</p>
+
+        <div class="cookie-category">
+            <div class="cookie-category-head">
+                <span>Necesarias</span>
+                <label class="cookie-switch cookie-switch-disabled"><input type="checkbox" checked disabled><span class="cookie-slider"></span></label>
+            </div>
+            <p>Imprescindibles para que la web funcione y para recordar tu elección sobre cookies. No se pueden desactivar.</p>
+        </div>
+
+        <div class="cookie-category">
+            <div class="cookie-category-head">
+                <span>Analíticas</span>
+                <label class="cookie-switch"><input type="checkbox" id="cookie-analytics-toggle"><span class="cookie-slider"></span></label>
+            </div>
+            <p>Nos ayudarían a entender cómo se usa la web para mejorarla. Esta web no tiene actualmente ninguna cookie analítica activa; si se activan en el futuro, se hará según lo que elijas aquí.</p>
+        </div>
+
+        <div class="cookie-modal-actions">
+            <button type="button" class="cookie-btn cookie-btn-solid-reject" id="cookie-reject-modal">Rechazar todas</button>
+            <button type="button" class="cookie-btn cookie-btn-solid" id="cookie-save">Guardar preferencias</button>
+        </div>
+    </div>
+</div>
 
 <script>
     // scroll reveal
@@ -536,6 +639,48 @@
         });
     },{ threshold:0.12 });
     document.querySelectorAll('.reveal').forEach(el=>io.observe(el));
+
+    // cookie consent
+    (function(){
+        const STORAGE_KEY = 'cookieConsent';
+        const banner = document.getElementById('cookie-banner');
+        const modal = document.getElementById('cookie-modal');
+        const analyticsToggle = document.getElementById('cookie-analytics-toggle');
+
+        function getConsent(){
+            try { return JSON.parse(localStorage.getItem(STORAGE_KEY)); } catch(e){ return null; }
+        }
+        function applyConsent(analytics){
+            // Punto de enganche: si en el futuro se añade Google Analytics u otra
+            // herramienta de medición, cargarla aquí solo cuando analytics === true.
+        }
+        function setConsent(analytics){
+            localStorage.setItem(STORAGE_KEY, JSON.stringify({ necessary:true, analytics:!!analytics, date:new Date().toISOString() }));
+            applyConsent(analytics);
+            banner.classList.remove('visible');
+            modal.hidden = true;
+        }
+        function openModal(){
+            const c = getConsent();
+            analyticsToggle.checked = !!(c && c.analytics);
+            modal.hidden = false;
+        }
+
+        const consent = getConsent();
+        if(consent){ applyConsent(consent.analytics); }
+        else { banner.classList.add('visible'); }
+
+        document.getElementById('cookie-accept').addEventListener('click', ()=> setConsent(true));
+        document.getElementById('cookie-reject').addEventListener('click', ()=> setConsent(false));
+        document.getElementById('cookie-configure').addEventListener('click', openModal);
+        document.getElementById('cookie-reject-modal').addEventListener('click', ()=> setConsent(false));
+        document.getElementById('cookie-save').addEventListener('click', ()=> setConsent(analyticsToggle.checked));
+
+        const settingsLink = document.getElementById('cookie-settings-link');
+        if(settingsLink){
+            settingsLink.addEventListener('click', (e)=>{ e.preventDefault(); openModal(); });
+        }
+    })();
 </script>
 </body>
 </html>

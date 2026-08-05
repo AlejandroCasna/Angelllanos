@@ -1,0 +1,265 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Aviso Legal · Ángel Llanos</title>
+<meta name="robots" content="noindex">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Barlow:wght@300;400;500;600;700&family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;1,300;1,400;1,500&display=swap" rel="stylesheet">
+<style>
+    :root{
+        --bg:#030304;
+        --panel:#111111;
+        --border:#242424;
+        --text:#ffffff;
+        --text-dim:#9a9a9a;
+        --text-dimmer:#777777;
+        --accent:#7DB4D4;
+        --serif:'Cormorant Garamond', serif;
+        --sans:'Barlow', sans-serif;
+    }
+    * { margin:0; padding:0; box-sizing:border-box; }
+    html { scroll-behavior:smooth; }
+    body { font-family:var(--sans); background:var(--bg); color:var(--text); line-height:1.6; }
+    a { color:var(--accent); }
+
+    .nav {
+        position:sticky; top:0; z-index:200;
+        display:flex; align-items:center; justify-content:space-between;
+        padding:22px 60px; background:rgba(0,0,0,0.75); backdrop-filter:blur(10px);
+        border-bottom:1px solid var(--border);
+    }
+    .nav-logo { font-family:var(--serif); font-size:22px; letter-spacing:2px; font-weight:500; text-decoration:none; color:var(--text); }
+    .nav-logo span { color:var(--accent); font-style:italic; }
+    .nav a.back { color:var(--text-dim); text-decoration:none; font-size:13px; letter-spacing:1px; text-transform:uppercase; }
+    .nav a.back:hover { color:var(--accent); }
+
+    main { max-width:780px; margin:0 auto; padding:70px 24px 110px; }
+    .doc-header { margin-bottom:50px; }
+    .eyebrow { display:inline-block; font-size:12px; letter-spacing:3px; text-transform:uppercase; color:var(--accent); font-weight:600; margin-bottom:16px; }
+    h1 { font-family:var(--serif); font-size:42px; font-weight:400; margin-bottom:14px; }
+    .updated { font-size:13px; color:var(--text-dimmer); }
+
+    h2 { font-family:var(--serif); font-size:24px; font-weight:500; color:var(--text); margin:40px 0 14px; }
+    p, li { font-size:15px; color:var(--text-dim); line-height:1.85; margin-bottom:14px; }
+    ul, ol { padding-left:22px; margin-bottom:14px; }
+    strong { color:var(--text); font-weight:600; }
+    .placeholder { color:#e0a860; }
+
+    table { width:100%; border-collapse:collapse; margin:18px 0 24px; font-size:14px; }
+    th, td { text-align:left; padding:10px 12px; border-bottom:1px solid var(--border); color:var(--text-dim); vertical-align:top; }
+    th { color:var(--text); font-weight:600; }
+
+    footer {
+        display:flex; flex-wrap:wrap; gap:16px; justify-content:space-between; align-items:center;
+        padding:30px 60px; font-size:12px; letter-spacing:1px; text-transform:uppercase;
+        color:var(--text-dimmer); border-top:1px solid var(--border);
+    }
+    .footer-legal { display:flex; gap:22px; flex-wrap:wrap; justify-content:center; }
+    .footer-legal a { color:var(--text-dimmer); text-decoration:none; transition:color .3s ease; }
+    .footer-legal a:hover { color:var(--accent); }
+    @media (max-width:600px){ footer{ flex-direction:column; text-align:center; } .nav{ padding:18px 24px; } }
+
+    /* COOKIE CONSENT */
+    .cookie-banner {
+        position:fixed; left:0; right:0; bottom:0; z-index:500;
+        background:#0b0c0e; border-top:1px solid var(--border);
+        padding:22px 40px; display:flex; flex-wrap:wrap; gap:20px;
+        align-items:center; justify-content:space-between;
+        transform:translateY(120%); transition:transform .4s ease;
+    }
+    .cookie-banner.visible { transform:translateY(0); }
+    .cookie-banner-text { flex:1 1 420px; font-size:13px; color:var(--text-dim); line-height:1.7; }
+    .cookie-banner-text a { color:var(--accent); text-decoration:underline; }
+    .cookie-banner-actions { display:flex; gap:12px; flex-wrap:wrap; }
+    .cookie-btn {
+        font-family:var(--sans); font-size:12px; letter-spacing:1px; text-transform:uppercase;
+        font-weight:600; padding:12px 22px; cursor:pointer; border-radius:2px; transition:all .3s ease;
+    }
+    .cookie-btn-solid { background:var(--accent); color:#000; border:1px solid var(--accent); }
+    .cookie-btn-solid:hover { background:transparent; color:var(--accent); }
+    .cookie-btn-solid-reject { background:transparent; color:var(--text); border:1px solid var(--text); }
+    .cookie-btn-solid-reject:hover { background:var(--text); color:#000; }
+    .cookie-btn-link { background:none; border:1px solid transparent; color:var(--text-dim); text-decoration:underline; }
+    .cookie-btn-link:hover { color:var(--text); }
+
+    .cookie-modal {
+        position:fixed; inset:0; z-index:600; background:rgba(0,0,0,.7);
+        display:flex; align-items:center; justify-content:center; padding:20px;
+    }
+    .cookie-modal[hidden] { display:none; }
+    .cookie-modal-panel {
+        background:var(--panel); border:1px solid var(--border); max-width:520px; width:100%;
+        padding:36px; max-height:86vh; overflow-y:auto;
+    }
+    .cookie-modal-panel h3 { font-family:var(--serif); font-size:24px; font-weight:400; margin-bottom:14px; color:var(--text); }
+    .cookie-modal-panel > p { font-size:13px; color:var(--text-dim); line-height:1.7; margin-bottom:24px; }
+    .cookie-category { border-top:1px solid var(--border); padding:18px 0; }
+    .cookie-category-head { display:flex; align-items:center; justify-content:space-between; font-size:14px; color:var(--text); font-weight:600; margin-bottom:8px; }
+    .cookie-category p { font-size:12px; color:var(--text-dimmer); line-height:1.6; }
+    .cookie-switch { position:relative; display:inline-block; width:40px; height:22px; flex-shrink:0; }
+    .cookie-switch input { opacity:0; width:0; height:0; }
+    .cookie-slider { position:absolute; inset:0; background:#333; border-radius:22px; transition:.3s; cursor:pointer; }
+    .cookie-slider::before { content:""; position:absolute; width:16px; height:16px; left:3px; top:3px; background:#fff; border-radius:50%; transition:.3s; }
+    .cookie-switch input:checked + .cookie-slider { background:var(--accent); }
+    .cookie-switch input:checked + .cookie-slider::before { transform:translateX(18px); }
+    .cookie-switch-disabled .cookie-slider { cursor:not-allowed; opacity:.6; }
+    .cookie-modal-actions { display:flex; gap:12px; justify-content:flex-end; margin-top:26px; flex-wrap:wrap; }
+
+    @media (max-width:600px){
+        .cookie-banner { padding:20px; }
+        .cookie-banner-actions { width:100%; }
+        .cookie-btn { flex:1; text-align:center; }
+    }
+</style>
+</head>
+<body>
+
+<nav class="nav">
+    <a class="nav-logo" href="v2.html">ÁNGEL <span>LLANOS</span></a>
+    <a class="back" href="v2.html">← Volver al inicio</a>
+</nav>
+
+<main>
+    <div class="doc-header">
+        <span class="eyebrow">Documento legal</span>
+        <h1>Aviso Legal</h1>
+        <p class="updated">Última actualización: agosto de 2026</p>
+    </div>
+
+    <h2>1. Datos identificativos del titular</h2>
+    <p>En cumplimiento del artículo 10 de la Ley 34/2002, de 11 de julio, de Servicios de la Sociedad de la Información y de Comercio Electrónico (LSSICE), se informa de los siguientes datos:</p>
+    <table>
+        <tr><th>Titular</th><td>Ángel Llanos Porro</td></tr>
+        <tr><th>NIF</th><td class="placeholder">[NIF - COMPLETAR]</td></tr>
+        <tr><th>Domicilio fiscal</th><td class="placeholder">[DOMICILIO FISCAL - COMPLETAR]</td></tr>
+        <tr><th>Correo electrónico</th><td>soyangel.llanoss@gmail.com</td></tr>
+        <tr><th>Actividad</th><td>Servicios de mentoría y acompañamiento personal 1:1, prestados de forma online</td></tr>
+        <tr><th>Sitio web</th><td><a href="https://soyangelllanoss.com/" target="_blank" rel="noopener">https://soyangelllanoss.com/</a></td></tr>
+    </table>
+    <p><strong>Nota para Ángel:</strong> los campos marcados en naranja son obligatorios por ley (art. 10 LSSICE) y deben completarse antes de publicar la web. El NIF y el domicilio fiscal no se han facilitado en el momento de redactar este documento.</p>
+
+    <h2>2. Objeto y ámbito de aplicación</h2>
+    <p>El presente Aviso Legal regula el uso del sitio web (en adelante, "el sitio web"), del que es titular Ángel Llanos Porro. La navegación por el sitio web atribuye la condición de usuario e implica la aceptación plena de las condiciones incluidas en este Aviso Legal.</p>
+
+    <h2>3. Condiciones de uso</h2>
+    <p>El usuario se compromete a hacer un uso adecuado y lícito del sitio web, de conformidad con la legislación aplicable, la buena fe, el orden público y el presente Aviso Legal. Queda prohibido el uso del sitio web con fines ilícitos o lesivos, o que de cualquier forma puedan causar perjuicio o impedir el normal funcionamiento del sitio web.</p>
+
+    <h2>4. Propiedad intelectual e industrial</h2>
+    <p>Todos los contenidos del sitio web (textos, imágenes, marcas, logotipos, diseño, código fuente y demás elementos) son titularidad de Ángel Llanos Porro o de terceros que han autorizado su uso, y están protegidos por la normativa de propiedad intelectual e industrial. Queda prohibida su reproducción, distribución, comunicación pública o transformación total o parcial sin autorización expresa del titular.</p>
+
+    <h2>5. Enlaces y contenidos de terceros</h2>
+    <p>El sitio web puede incluir enlaces a contenidos alojados en plataformas de terceros (como YouTube) y a la herramienta de reserva de citas Calendly. Ángel Llanos Porro no se hace responsable del contenido, políticas de privacidad o prácticas de dichos terceros, que se rigen por sus propias condiciones.</p>
+
+    <h2>6. Exclusión de responsabilidad</h2>
+    <p>Ángel Llanos Porro no garantiza la disponibilidad, continuidad ni infalibilidad del funcionamiento del sitio web, y no se hace responsable de los daños y perjuicios que pudieran derivarse de interrupciones, errores, virus informáticos o desconexiones ajenas a su control.</p>
+
+    <h2>7. Protección de datos</h2>
+    <p>El tratamiento de los datos personales facilitados a través del sitio web se rige por la <a href="politica-privacidad.html">Política de Privacidad</a>.</p>
+
+    <h2>8. Cookies</h2>
+    <p>Este sitio web utiliza cookies. Puedes consultar qué tipo de cookies se utilizan, con qué finalidad y cómo gestionarlas en la <a href="politica-cookies.html">Política de Cookies</a>.</p>
+
+    <h2>9. Legislación aplicable y jurisdicción</h2>
+    <p>Las presentes condiciones se rigen por la legislación española. Para la resolución de cualquier controversia derivada del acceso o uso del sitio web, cuando el usuario tenga la condición de consumidor, será de aplicación el fuero legalmente establecido para consumidores, correspondiendo la competencia a los juzgados y tribunales del domicilio del consumidor.</p>
+
+    <h2>10. Modificaciones</h2>
+    <p>Ángel Llanos Porro se reserva el derecho a modificar el presente Aviso Legal para adaptarlo a novedades legislativas o cambios en el sitio web. Se recomienda revisar este documento periódicamente.</p>
+</main>
+
+<footer>
+    <span>© 2026 · Ángel Llanos · Mentoría Online</span>
+    <nav class="footer-legal">
+        <a href="aviso-legal.html">Aviso legal</a>
+        <a href="politica-privacidad.html">Política de privacidad</a>
+        <a href="politica-cookies.html">Política de cookies</a>
+        <a href="#" id="cookie-settings-link">Configurar cookies</a>
+    </nav>
+</footer>
+
+<!-- COOKIE CONSENT -->
+<div id="cookie-banner" class="cookie-banner" role="dialog" aria-live="polite" aria-label="Aviso de cookies">
+    <div class="cookie-banner-text">
+        <p>Usamos cookies propias necesarias para el funcionamiento de la web y, solo si las aceptas, cookies analíticas para mejorar tu experiencia. Puedes aceptarlas, rechazarlas o configurarlas. Más información en la <a href="politica-cookies.html">Política de cookies</a>.</p>
+    </div>
+    <div class="cookie-banner-actions">
+        <button type="button" class="cookie-btn cookie-btn-solid-reject" id="cookie-reject">Rechazar</button>
+        <button type="button" class="cookie-btn cookie-btn-link" id="cookie-configure">Configurar</button>
+        <button type="button" class="cookie-btn cookie-btn-solid" id="cookie-accept">Aceptar todas</button>
+    </div>
+</div>
+
+<div id="cookie-modal" class="cookie-modal" hidden>
+    <div class="cookie-modal-panel" role="dialog" aria-modal="true" aria-label="Configuración de cookies">
+        <h3>Configuración de cookies</h3>
+        <p>Elige qué cookies quieres permitir. Puedes cambiar esta elección cuando quieras desde «Configurar cookies», en el pie de página.</p>
+
+        <div class="cookie-category">
+            <div class="cookie-category-head">
+                <span>Necesarias</span>
+                <label class="cookie-switch cookie-switch-disabled"><input type="checkbox" checked disabled><span class="cookie-slider"></span></label>
+            </div>
+            <p>Imprescindibles para que la web funcione y para recordar tu elección sobre cookies. No se pueden desactivar.</p>
+        </div>
+
+        <div class="cookie-category">
+            <div class="cookie-category-head">
+                <span>Analíticas</span>
+                <label class="cookie-switch"><input type="checkbox" id="cookie-analytics-toggle"><span class="cookie-slider"></span></label>
+            </div>
+            <p>Nos ayudarían a entender cómo se usa la web para mejorarla. Esta web no tiene actualmente ninguna cookie analítica activa; si se activan en el futuro, se hará según lo que elijas aquí.</p>
+        </div>
+
+        <div class="cookie-modal-actions">
+            <button type="button" class="cookie-btn cookie-btn-solid-reject" id="cookie-reject-modal">Rechazar todas</button>
+            <button type="button" class="cookie-btn cookie-btn-solid" id="cookie-save">Guardar preferencias</button>
+        </div>
+    </div>
+</div>
+
+<script>
+    (function(){
+        const STORAGE_KEY = 'cookieConsent';
+        const banner = document.getElementById('cookie-banner');
+        const modal = document.getElementById('cookie-modal');
+        const analyticsToggle = document.getElementById('cookie-analytics-toggle');
+
+        function getConsent(){
+            try { return JSON.parse(localStorage.getItem(STORAGE_KEY)); } catch(e){ return null; }
+        }
+        function applyConsent(analytics){
+            // Punto de enganche: si en el futuro se añade Google Analytics u otra
+            // herramienta de medición, cargarla aquí solo cuando analytics === true.
+        }
+        function setConsent(analytics){
+            localStorage.setItem(STORAGE_KEY, JSON.stringify({ necessary:true, analytics:!!analytics, date:new Date().toISOString() }));
+            applyConsent(analytics);
+            banner.classList.remove('visible');
+            modal.hidden = true;
+        }
+        function openModal(){
+            const c = getConsent();
+            analyticsToggle.checked = !!(c && c.analytics);
+            modal.hidden = false;
+        }
+
+        const consent = getConsent();
+        if(consent){ applyConsent(consent.analytics); }
+        else { banner.classList.add('visible'); }
+
+        document.getElementById('cookie-accept').addEventListener('click', ()=> setConsent(true));
+        document.getElementById('cookie-reject').addEventListener('click', ()=> setConsent(false));
+        document.getElementById('cookie-configure').addEventListener('click', openModal);
+        document.getElementById('cookie-reject-modal').addEventListener('click', ()=> setConsent(false));
+        document.getElementById('cookie-save').addEventListener('click', ()=> setConsent(analyticsToggle.checked));
+
+        const settingsLink = document.getElementById('cookie-settings-link');
+        if(settingsLink){
+            settingsLink.addEventListener('click', (e)=>{ e.preventDefault(); openModal(); });
+        }
+    })();
+</script>
+</body>
+</html>

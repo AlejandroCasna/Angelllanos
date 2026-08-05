@@ -1,0 +1,289 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Política de Privacidad · Ángel Llanos</title>
+<meta name="robots" content="noindex">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Barlow:wght@300;400;500;600;700&family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;1,300;1,400;1,500&display=swap" rel="stylesheet">
+<style>
+    :root{
+        --bg:#030304;
+        --panel:#111111;
+        --border:#242424;
+        --text:#ffffff;
+        --text-dim:#9a9a9a;
+        --text-dimmer:#777777;
+        --accent:#7DB4D4;
+        --serif:'Cormorant Garamond', serif;
+        --sans:'Barlow', sans-serif;
+    }
+    * { margin:0; padding:0; box-sizing:border-box; }
+    html { scroll-behavior:smooth; }
+    body { font-family:var(--sans); background:var(--bg); color:var(--text); line-height:1.6; }
+    a { color:var(--accent); }
+
+    .nav {
+        position:sticky; top:0; z-index:200;
+        display:flex; align-items:center; justify-content:space-between;
+        padding:22px 60px; background:rgba(0,0,0,0.75); backdrop-filter:blur(10px);
+        border-bottom:1px solid var(--border);
+    }
+    .nav-logo { font-family:var(--serif); font-size:22px; letter-spacing:2px; font-weight:500; text-decoration:none; color:var(--text); }
+    .nav-logo span { color:var(--accent); font-style:italic; }
+    .nav a.back { color:var(--text-dim); text-decoration:none; font-size:13px; letter-spacing:1px; text-transform:uppercase; }
+    .nav a.back:hover { color:var(--accent); }
+
+    main { max-width:780px; margin:0 auto; padding:70px 24px 110px; }
+    .doc-header { margin-bottom:50px; }
+    .eyebrow { display:inline-block; font-size:12px; letter-spacing:3px; text-transform:uppercase; color:var(--accent); font-weight:600; margin-bottom:16px; }
+    h1 { font-family:var(--serif); font-size:42px; font-weight:400; margin-bottom:14px; }
+    .updated { font-size:13px; color:var(--text-dimmer); }
+
+    h2 { font-family:var(--serif); font-size:24px; font-weight:500; color:var(--text); margin:40px 0 14px; }
+    p, li { font-size:15px; color:var(--text-dim); line-height:1.85; margin-bottom:14px; }
+    ul, ol { padding-left:22px; margin-bottom:14px; }
+    strong { color:var(--text); font-weight:600; }
+    .placeholder { color:#e0a860; }
+
+    table { width:100%; border-collapse:collapse; margin:18px 0 24px; font-size:14px; }
+    th, td { text-align:left; padding:10px 12px; border-bottom:1px solid var(--border); color:var(--text-dim); vertical-align:top; }
+    th { color:var(--text); font-weight:600; }
+
+    footer {
+        display:flex; flex-wrap:wrap; gap:16px; justify-content:space-between; align-items:center;
+        padding:30px 60px; font-size:12px; letter-spacing:1px; text-transform:uppercase;
+        color:var(--text-dimmer); border-top:1px solid var(--border);
+    }
+    .footer-legal { display:flex; gap:22px; flex-wrap:wrap; justify-content:center; }
+    .footer-legal a { color:var(--text-dimmer); text-decoration:none; transition:color .3s ease; }
+    .footer-legal a:hover { color:var(--accent); }
+    @media (max-width:600px){ footer{ flex-direction:column; text-align:center; } .nav{ padding:18px 24px; } }
+
+    /* COOKIE CONSENT */
+    .cookie-banner {
+        position:fixed; left:0; right:0; bottom:0; z-index:500;
+        background:#0b0c0e; border-top:1px solid var(--border);
+        padding:22px 40px; display:flex; flex-wrap:wrap; gap:20px;
+        align-items:center; justify-content:space-between;
+        transform:translateY(120%); transition:transform .4s ease;
+    }
+    .cookie-banner.visible { transform:translateY(0); }
+    .cookie-banner-text { flex:1 1 420px; font-size:13px; color:var(--text-dim); line-height:1.7; }
+    .cookie-banner-text a { color:var(--accent); text-decoration:underline; }
+    .cookie-banner-actions { display:flex; gap:12px; flex-wrap:wrap; }
+    .cookie-btn {
+        font-family:var(--sans); font-size:12px; letter-spacing:1px; text-transform:uppercase;
+        font-weight:600; padding:12px 22px; cursor:pointer; border-radius:2px; transition:all .3s ease;
+    }
+    .cookie-btn-solid { background:var(--accent); color:#000; border:1px solid var(--accent); }
+    .cookie-btn-solid:hover { background:transparent; color:var(--accent); }
+    .cookie-btn-solid-reject { background:transparent; color:var(--text); border:1px solid var(--text); }
+    .cookie-btn-solid-reject:hover { background:var(--text); color:#000; }
+    .cookie-btn-link { background:none; border:1px solid transparent; color:var(--text-dim); text-decoration:underline; }
+    .cookie-btn-link:hover { color:var(--text); }
+
+    .cookie-modal {
+        position:fixed; inset:0; z-index:600; background:rgba(0,0,0,.7);
+        display:flex; align-items:center; justify-content:center; padding:20px;
+    }
+    .cookie-modal[hidden] { display:none; }
+    .cookie-modal-panel {
+        background:var(--panel); border:1px solid var(--border); max-width:520px; width:100%;
+        padding:36px; max-height:86vh; overflow-y:auto;
+    }
+    .cookie-modal-panel h3 { font-family:var(--serif); font-size:24px; font-weight:400; margin-bottom:14px; color:var(--text); }
+    .cookie-modal-panel > p { font-size:13px; color:var(--text-dim); line-height:1.7; margin-bottom:24px; }
+    .cookie-category { border-top:1px solid var(--border); padding:18px 0; }
+    .cookie-category-head { display:flex; align-items:center; justify-content:space-between; font-size:14px; color:var(--text); font-weight:600; margin-bottom:8px; }
+    .cookie-category p { font-size:12px; color:var(--text-dimmer); line-height:1.6; }
+    .cookie-switch { position:relative; display:inline-block; width:40px; height:22px; flex-shrink:0; }
+    .cookie-switch input { opacity:0; width:0; height:0; }
+    .cookie-slider { position:absolute; inset:0; background:#333; border-radius:22px; transition:.3s; cursor:pointer; }
+    .cookie-slider::before { content:""; position:absolute; width:16px; height:16px; left:3px; top:3px; background:#fff; border-radius:50%; transition:.3s; }
+    .cookie-switch input:checked + .cookie-slider { background:var(--accent); }
+    .cookie-switch input:checked + .cookie-slider::before { transform:translateX(18px); }
+    .cookie-switch-disabled .cookie-slider { cursor:not-allowed; opacity:.6; }
+    .cookie-modal-actions { display:flex; gap:12px; justify-content:flex-end; margin-top:26px; flex-wrap:wrap; }
+
+    @media (max-width:600px){
+        .cookie-banner { padding:20px; }
+        .cookie-banner-actions { width:100%; }
+        .cookie-btn { flex:1; text-align:center; }
+    }
+</style>
+</head>
+<body>
+
+<nav class="nav">
+    <a class="nav-logo" href="v2.html">ÁNGEL <span>LLANOS</span></a>
+    <a class="back" href="v2.html">← Volver al inicio</a>
+</nav>
+
+<main>
+    <div class="doc-header">
+        <span class="eyebrow">Documento legal</span>
+        <h1>Política de Privacidad</h1>
+        <p class="updated">Última actualización: agosto de 2026</p>
+    </div>
+
+    <h2>1. Responsable del tratamiento</h2>
+    <table>
+        <tr><th>Responsable</th><td>Ángel Llanos Porro</td></tr>
+        <tr><th>NIF</th><td class="placeholder">[NIF - COMPLETAR]</td></tr>
+        <tr><th>Domicilio</th><td class="placeholder">[DOMICILIO FISCAL - COMPLETAR]</td></tr>
+        <tr><th>Correo electrónico</th><td>soyangel.llanoss@gmail.com</td></tr>
+    </table>
+    <p>Esta Política de Privacidad describe cómo se recogen, tratan y protegen los datos personales de las personas que visitan el sitio web o contactan a través de él, de conformidad con el Reglamento (UE) 2016/679 (RGPD) y la Ley Orgánica 3/2018, de Protección de Datos Personales y garantía de los derechos digitales (LOPDGDD).</p>
+
+    <h2>2. ¿Qué datos tratamos y con qué finalidad?</h2>
+    <table>
+        <tr><th>Finalidad</th><th>Datos tratados</th><th>Base jurídica</th></tr>
+        <tr>
+            <td>Gestionar la reserva de una llamada de mentoría a través de Calendly</td>
+            <td>Nombre, correo electrónico, y demás datos que facilites voluntariamente en el formulario de reserva</td>
+            <td>Ejecución de medidas precontractuales a solicitud del interesado (art. 6.1.b RGPD)</td>
+        </tr>
+        <tr>
+            <td>Responder a consultas enviadas por correo electrónico</td>
+            <td>Nombre, correo electrónico y el contenido del mensaje</td>
+            <td>Consentimiento del interesado al remitir la consulta (art. 6.1.a RGPD)</td>
+        </tr>
+        <tr>
+            <td>Recordar tu elección sobre cookies</td>
+            <td>Preferencia de cookies almacenada en tu propio navegador</td>
+            <td>Interés legítimo / obligación derivada del art. 22.2 LSSICE</td>
+        </tr>
+    </table>
+
+    <h2>3. ¿Durante cuánto tiempo conservamos los datos?</h2>
+    <p>Los datos se conservarán mientras exista una relación con el usuario y, una vez finalizada esta, durante los plazos de prescripción legal que resulten de aplicación (a efectos fiscales y de posibles responsabilidades derivadas del tratamiento). Los datos de contacto para consultas puntuales se conservan el tiempo necesario para atender la solicitud y, posteriormente, se suprimen o anonimizan.</p>
+
+    <h2>4. ¿A qué destinatarios se comunican los datos?</h2>
+    <p>No se cede ningún dato a terceros salvo obligación legal. Sí se emplean los siguientes encargados del tratamiento (proveedores que prestan un servicio necesario y tratan datos por cuenta del responsable):</p>
+    <ul>
+        <li><strong>Calendly, LLC</strong> (Estados Unidos): gestiona la reserva y programación de las llamadas. El envío de datos a Calendly implica una transferencia internacional fuera del Espacio Económico Europeo, que se realiza al amparo de las garantías previstas por Calendly en su propia política de privacidad (mecanismos como el EU-US Data Privacy Framework u otras cláusulas contractuales tipo aprobadas por la Comisión Europea, según correspondan en cada momento).</li>
+        <li><strong>Google Ireland Ltd. / Google LLC</strong>: el sitio web carga las tipografías del proyecto desde los servidores de Google Fonts, lo que puede implicar la transmisión de la dirección IP del visitante a Google.</li>
+        <li>El proveedor de <strong>hosting</strong> donde se aloja el sitio web <span class="placeholder">[NOMBRE DEL PROVEEDOR DE HOSTING - COMPLETAR]</span>.</li>
+    </ul>
+    <p>Actualmente esta web no utiliza herramientas de analítica ni de publicidad. Si en el futuro se incorporase alguna (por ejemplo, Google Analytics), se actualizará esta política y se solicitará el consentimiento correspondiente a través del panel de cookies.</p>
+
+    <h2>5. Derechos de las personas interesadas</h2>
+    <p>Puedes ejercer en cualquier momento, y de forma gratuita, los siguientes derechos escribiendo a <a href="mailto:soyangel.llanoss@gmail.com">soyangel.llanoss@gmail.com</a>, adjuntando copia de un documento que acredite tu identidad:</p>
+    <ul>
+        <li><strong>Acceso:</strong> conocer qué datos tuyos tratamos.</li>
+        <li><strong>Rectificación:</strong> corregir datos inexactos o incompletos.</li>
+        <li><strong>Supresión:</strong> solicitar la eliminación de tus datos.</li>
+        <li><strong>Oposición:</strong> oponerte a un tratamiento concreto.</li>
+        <li><strong>Limitación del tratamiento:</strong> solicitar que se restrinja el uso de tus datos.</li>
+        <li><strong>Portabilidad:</strong> recibir tus datos en un formato estructurado y de uso común.</li>
+        <li><strong>Retirar el consentimiento</strong> prestado en cualquier momento, sin que ello afecte a la licitud del tratamiento previo.</li>
+    </ul>
+    <p>Si consideras que tus derechos no han sido debidamente atendidos, puedes presentar una reclamación ante la Agencia Española de Protección de Datos (AEPD) — <a href="https://www.aepd.es" target="_blank" rel="noopener">www.aepd.es</a>.</p>
+
+    <h2>6. Medidas de seguridad</h2>
+    <p>Se aplican las medidas técnicas y organizativas razonables para garantizar la seguridad, integridad y confidencialidad de los datos personales tratados, y evitar su alteración, pérdida, tratamiento o acceso no autorizado.</p>
+
+    <h2>7. Menores de edad</h2>
+    <p>Los servicios ofrecidos a través de este sitio web están dirigidos a personas mayores de 18 años. No se recogen conscientemente datos de menores de edad.</p>
+
+    <h2>8. Cambios en esta política</h2>
+    <p>Esta Política de Privacidad puede actualizarse para adaptarse a novedades legislativas, jurisprudenciales o a cambios en los servicios ofrecidos. Se recomienda consultarla periódicamente.</p>
+</main>
+
+<footer>
+    <span>© 2026 · Ángel Llanos · Mentoría Online</span>
+    <nav class="footer-legal">
+        <a href="aviso-legal.html">Aviso legal</a>
+        <a href="politica-privacidad.html">Política de privacidad</a>
+        <a href="politica-cookies.html">Política de cookies</a>
+        <a href="#" id="cookie-settings-link">Configurar cookies</a>
+    </nav>
+</footer>
+
+<!-- COOKIE CONSENT -->
+<div id="cookie-banner" class="cookie-banner" role="dialog" aria-live="polite" aria-label="Aviso de cookies">
+    <div class="cookie-banner-text">
+        <p>Usamos cookies propias necesarias para el funcionamiento de la web y, solo si las aceptas, cookies analíticas para mejorar tu experiencia. Puedes aceptarlas, rechazarlas o configurarlas. Más información en la <a href="politica-cookies.html">Política de cookies</a>.</p>
+    </div>
+    <div class="cookie-banner-actions">
+        <button type="button" class="cookie-btn cookie-btn-solid-reject" id="cookie-reject">Rechazar</button>
+        <button type="button" class="cookie-btn cookie-btn-link" id="cookie-configure">Configurar</button>
+        <button type="button" class="cookie-btn cookie-btn-solid" id="cookie-accept">Aceptar todas</button>
+    </div>
+</div>
+
+<div id="cookie-modal" class="cookie-modal" hidden>
+    <div class="cookie-modal-panel" role="dialog" aria-modal="true" aria-label="Configuración de cookies">
+        <h3>Configuración de cookies</h3>
+        <p>Elige qué cookies quieres permitir. Puedes cambiar esta elección cuando quieras desde «Configurar cookies», en el pie de página.</p>
+
+        <div class="cookie-category">
+            <div class="cookie-category-head">
+                <span>Necesarias</span>
+                <label class="cookie-switch cookie-switch-disabled"><input type="checkbox" checked disabled><span class="cookie-slider"></span></label>
+            </div>
+            <p>Imprescindibles para que la web funcione y para recordar tu elección sobre cookies. No se pueden desactivar.</p>
+        </div>
+
+        <div class="cookie-category">
+            <div class="cookie-category-head">
+                <span>Analíticas</span>
+                <label class="cookie-switch"><input type="checkbox" id="cookie-analytics-toggle"><span class="cookie-slider"></span></label>
+            </div>
+            <p>Nos ayudarían a entender cómo se usa la web para mejorarla. Esta web no tiene actualmente ninguna cookie analítica activa; si se activan en el futuro, se hará según lo que elijas aquí.</p>
+        </div>
+
+        <div class="cookie-modal-actions">
+            <button type="button" class="cookie-btn cookie-btn-solid-reject" id="cookie-reject-modal">Rechazar todas</button>
+            <button type="button" class="cookie-btn cookie-btn-solid" id="cookie-save">Guardar preferencias</button>
+        </div>
+    </div>
+</div>
+
+<script>
+    (function(){
+        const STORAGE_KEY = 'cookieConsent';
+        const banner = document.getElementById('cookie-banner');
+        const modal = document.getElementById('cookie-modal');
+        const analyticsToggle = document.getElementById('cookie-analytics-toggle');
+
+        function getConsent(){
+            try { return JSON.parse(localStorage.getItem(STORAGE_KEY)); } catch(e){ return null; }
+        }
+        function applyConsent(analytics){
+            // Punto de enganche: si en el futuro se añade Google Analytics u otra
+            // herramienta de medición, cargarla aquí solo cuando analytics === true.
+        }
+        function setConsent(analytics){
+            localStorage.setItem(STORAGE_KEY, JSON.stringify({ necessary:true, analytics:!!analytics, date:new Date().toISOString() }));
+            applyConsent(analytics);
+            banner.classList.remove('visible');
+            modal.hidden = true;
+        }
+        function openModal(){
+            const c = getConsent();
+            analyticsToggle.checked = !!(c && c.analytics);
+            modal.hidden = false;
+        }
+
+        const consent = getConsent();
+        if(consent){ applyConsent(consent.analytics); }
+        else { banner.classList.add('visible'); }
+
+        document.getElementById('cookie-accept').addEventListener('click', ()=> setConsent(true));
+        document.getElementById('cookie-reject').addEventListener('click', ()=> setConsent(false));
+        document.getElementById('cookie-configure').addEventListener('click', openModal);
+        document.getElementById('cookie-reject-modal').addEventListener('click', ()=> setConsent(false));
+        document.getElementById('cookie-save').addEventListener('click', ()=> setConsent(analyticsToggle.checked));
+
+        const settingsLink = document.getElementById('cookie-settings-link');
+        if(settingsLink){
+            settingsLink.addEventListener('click', (e)=>{ e.preventDefault(); openModal(); });
+        }
+    })();
+</script>
+</body>
+</html>
