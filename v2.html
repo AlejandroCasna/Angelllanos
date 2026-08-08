@@ -145,14 +145,8 @@
 
     /* STATS */
     .stats { background:var(--bg); }
-    .stats-grid { display:grid; grid-template-columns:1.1fr .9fr; gap:60px; align-items:center; }
-    .stats-text p { font-size:16px; color:var(--text-dim); margin-top:20px; max-width:440px; line-height:1.8; }
-    .stats-numbers { display:flex; flex-direction:column; gap:28px; }
-    .stat-item { border-left:2px solid var(--accent); padding-left:24px; }
-    .stat-item .num { font-family:var(--serif); font-size:40px; color:var(--text); }
-    .stat-item .label { font-size:12px; letter-spacing:1px; text-transform:uppercase; color:var(--text-dimmer); margin-top:4px; }
-
-    @media (max-width:900px){ .stats-grid{ grid-template-columns:1fr; } }
+    .stats-grid { max-width:680px; }
+    .stats-text p { font-size:16px; color:var(--text-dim); margin-top:20px; max-width:520px; line-height:1.8; }
 
     /* PARA QUIEN */
     .para-quien { background:var(--bg-alt); }
@@ -287,7 +281,7 @@
     }
     @media (max-width:640px){
         section { padding:60px 20px; }
-        .hero { padding:120px 16px 60px; }
+        .hero { min-height:auto; padding:120px 16px 60px; }
         .hero h1 { font-size:30px; }
         h2 { font-size:26px; }
     }
@@ -401,11 +395,6 @@
             <span class="eyebrow">El punto de partida</span>
             <h2>Reconocer el bucle<br><em>es el primer paso.</em></h2>
             <p>No hace falta tocar fondo para darte cuenta de que algo no encaja. Hace falta dejar de mirar hacia otro lado y empezar a preguntar de verdad.</p>
-        </div>
-        <div class="stats-numbers">
-            <div class="stat-item"><div class="num">6M</div><div class="label">Mínimo de acompañamiento real</div></div>
-            <div class="stat-item"><div class="num">1:1</div><div class="label">Sesiones personalizadas en todos los planes</div></div>
-            <div class="stat-item"><div class="num">12X</div><div class="label">Meses de financiación disponible</div></div>
         </div>
     </div>
 </section>
