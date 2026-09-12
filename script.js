@@ -14,3 +14,19 @@ mainNav.querySelectorAll('a').forEach((link) => {
     navToggle.setAttribute('aria-expanded', 'false');
   });
 });
+
+const heroVideo = document.getElementById('heroVideo');
+
+if (heroVideo) {
+  heroVideo.addEventListener('click', () => {
+    const videoId = heroVideo.dataset.youtubeId;
+    const iframe = document.createElement('iframe');
+    iframe.src = `https://www.youtube.com/embed/${videoId}?autoplay=1`;
+    iframe.title = 'Podcast de portada — Ángel Llanos';
+    iframe.setAttribute('frameborder', '0');
+    iframe.setAttribute('allow', 'accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share');
+    iframe.setAttribute('allowfullscreen', '');
+    heroVideo.innerHTML = '';
+    heroVideo.appendChild(iframe);
+  }, { once: true });
+}

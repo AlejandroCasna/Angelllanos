@@ -4,7 +4,7 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Ángel Llanos</title>
-<meta name="description" content="Ángel Llanos — Método HEBI, consultoría 1 a 1 y el libro Cambia la piel. Rompe el bucle de una vez.">
+<meta name="description" content="Ángel Llanos — Método HEBI, mentorías 1 a 1 y el libro Cambia la piel. Rompe el bucle de una vez.">
 <link rel="icon" href="assets/logo.png">
 <link rel="stylesheet" href="style.css">
 </head>
@@ -13,12 +13,12 @@
 <header class="site-header" id="inicio">
   <div class="container header-inner">
     <a href="#inicio" class="logo">
-      <img src="assets/logo.png" alt="Ángel Llanos">
+      <img src="assets/logo-header.png" alt="Ángel Llanos">
     </a>
     <nav class="main-nav" id="mainNav">
       <a href="#inicio">Inicio</a>
       <a href="#libro">Mi libro</a>
-      <a href="#consultoria">Consultoría 1:1</a>
+      <a href="#mentorias">Mentorías 1 a 1</a>
     </nav>
     <button class="nav-toggle" id="navToggle" aria-label="Abrir menú" aria-expanded="false">
       <span></span><span></span><span></span>
@@ -31,15 +31,11 @@
   <!-- HERO -->
   <section class="hero">
     <div class="container">
-      <div class="video-frame">
-        <iframe
-          src="https://www.youtube.com/embed/dpg-EAuOKEA"
-          title="Podcast de portada — Ángel Llanos"
-          frameborder="0"
-          allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
-          allowfullscreen
-          loading="lazy">
-        </iframe>
+      <div class="video-frame" id="heroVideo" data-youtube-id="dpg-EAuOKEA">
+        <img src="assets/podcast-cover.jpeg" alt="Podcast de portada — Ángel Llanos" class="video-cover">
+        <button class="play-btn" type="button" aria-label="Reproducir podcast de portada">
+          <svg viewBox="0 0 24 24" fill="none"><path d="M8 5v14l11-7L8 5Z" fill="currentColor"/></svg>
+        </button>
       </div>
 
       <div class="hero-actions">
@@ -53,7 +49,7 @@
           <span class="action-icon" aria-hidden="true">
             <svg viewBox="0 0 24 24" fill="none"><path d="M9.5 14.5 20 4M13 4h7v7" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/><path d="M18 13.5V19a2 2 0 0 1-2 2H6a2 2 0 0 1-2-2V9a2 2 0 0 1 2-2h5.5" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg>
           </span>
-          <span>Consultoría estratégica</span>
+          <span>Mentoría 1 a 1</span>
         </a>
       </div>
     </div>
@@ -78,7 +74,7 @@
   </section>
 
   <!-- CONSULTORÍA 1:1 -->
-  <section class="section section-alt" id="consultoria">
+  <section class="section section-alt" id="mentorias">
     <div class="container">
       <div class="section-head">
         <h2>Una historia que se repite, un vacío que no se va y un éxito que nunca es suficiente</h2>
@@ -177,7 +173,7 @@
 
 <footer class="site-footer">
   <div class="container footer-inner">
-    <img src="assets/logo.png" alt="Ángel Llanos" class="footer-logo">
+    <img src="assets/logo-header.png" alt="Ángel Llanos" class="footer-logo">
     <p class="copyright">Copyright <span id="year"></span> © Ángel Llanos</p>
     <nav class="legal-nav">
       <a href="#">Aviso legal</a>
